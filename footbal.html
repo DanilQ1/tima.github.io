@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Контейнер с воротами и мячами
-  </title>
-  <style>
-   @font-face {
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контейнер с воротами и мячами</title>
+    <style>
+        @font-face {
             font-family: 'Intro';
             src: url('static/intro.otf') format('opentype');
             font-weight: normal;
@@ -239,10 +237,10 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            background-color: #3f3939;
+            background-color: #333;
             padding: 10px 0;
             border-radius: 50px;
-            height: 70px;
+            height: 70px; /* Фиксированная высота для десктопа */
         }
 
         .tab button {
@@ -343,99 +341,55 @@
             -webkit-tap-highlight-color: transparent; /* Убирает подсветку при нажатии на любом элементе */
             -webkit-touch-callout: none; /* Отключает вызов меню на долгий тап */
         }
-  </style>
- </head>
- <body>
-    <header style="position: relative ; height: 50px; background-color: #3f3939; width: 100%; display: flex; align-items: center; justify-content: center; text-align: center;">
-    <span style="color: white;">Tima</span>
-   </span>
-  </header>
-  <div class="counter-container">
-   <div class="counter">
-    <div class="fill">
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="static/logo.jpg" alt="Logo">
+        <span>TIMA</span>
+    </header>
+    <div class="counter-container">
+        <div class="counter">
+            <div class="fill"></div> <!-- Новый элемент для заполнения -->
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <div class="labels">
+            <span>x2</span>
+            <span>x4</span>
+            <span>x12</span>
+            <span>x20</span>
+            <span>x32</span>
+        </div>
     </div>
-    <!-- Новый элемент для заполнения -->
-    <div class="dot">
+    <div class="goal-container">
+        <!-- Вставляем мячи -->
+        <div class="circle"></div><div class="circle"></div><div class="circle"></div>
+        <div class="circle"></div><div class="circle"></div><div class="circle"></div>
+        <div class="circle"></div><div class="circle"></div><div class="circle"></div>
+        <div class="circle"></div><div class="circle"></div><div class="circle"></div>
+        <div class="circle"></div><div class="circle"></div><div class="circle"></div>
     </div>
-    <div class="dot">
+
+    <button class="kick-button">KICK</button>
+
+    <!-- Анимация движущихся мячей -->
+    <div class="moving-ball"></div>
+    <div class="moving-ball" style="animation-delay: 3s;"></div>
+    <div class="moving-ball" style="animation-delay: 6s;"></div>
+     <div class="tab">
+        <button class="tablinks games-icon" data-tab="Games" onclick="window.location.href='https://danilq1.github.io/tima.github.io/';">
+            <img src="static/back.png" alt="Игры">
+        </button>
     </div>
-    <div class="dot">
-    </div>
-    <div class="dot">
-    </div>
-    <div class="dot">
-    </div>
-   </div>
-   <div class="labels">
-    <span>
-     x2
-    </span>
-    <span>
-     x4
-    </span>
-    <span>
-     x12
-    </span>
-    <span>
-     x20
-    </span>
-    <span>
-     x32
-    </span>
-   </div>
-  </div>
-  <div class="goal-container">
-   <!-- Вставляем мячи -->
-   <div class="circle">
-   </div>
-   <div class="circle">
-   </div>
-   <div class="circle">
-   </div>
-   <div class="circle">
-   </div>
-   <div class="circle">
-   </div>
-   <div class="circle">
-   </div>
-   <div class="circle">
-   </div>
-   <div class="circle">
-   </div>
-   <div class="circle">
-   </div>
-   <div class="circle">
-   </div>
-   <div class="circle">
-   </div>
-   <div class="circle">
-   </div>
-   <div class="circle">
-   </div>
-   <div class="circle">
-   </div>
-   <div class="circle">
-   </div>
-  </div>
-  <button class="kick-button">
-   KICK
-  </button>
-  <!-- Анимация движущихся мячей -->
-  <div class="moving-ball">
-  </div>
-  <div class="moving-ball" style="animation-delay: 3s;">
-  </div>
-  <div class="moving-ball" style="animation-delay: 6s;">
-  </div>
-  <div class="tab">
-   <button class="tablinks games-icon" data-tab="Games" onclick="window.location.href='https://danilq1.github.io/tima.github.io/';">
-    <img alt="Игры" src="back.png"/>
-   </button>
-  </div>
-  <script src="telegram-web-app.js">
-  </script>
-  <script>
-   function triggerHapticFeedback() {
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+          function triggerHapticFeedback() {
             if (window.Telegram && window.Telegram.WebApp.HapticFeedback) {
                 window.Telegram.WebApp.HapticFeedback.impactOccurred('medium');
             }
@@ -478,6 +432,6 @@ document.querySelector('.kick-button').addEventListener('click', function() {
         pulseCount = 0;
     }
 });
-  </script>
- </body>
+    </script>
+</body>
 </html>
